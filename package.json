@@ -1,0 +1,48 @@
+{
+  "name": "Mican",
+  "version": "0.0.0",
+  "description": "Israeli Social Initiatives Index",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "postinstall": "node_modules/.bin/gulp build"
+  },
+  "author": "Stav Geffen <stavgeffen@gmail.com> (https://stav.io/)",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-es2015": "6.18.0",
+    "compression": "1.6.2",
+    "consolidate": "0.14.4",
+    "document-ready": "1.0.3",
+    "dotenv": "2.0.0",
+    "express": "4.14.0",
+    "express-enrouten": "1.3.0",
+    "fuzzyjs": "2.1.2",
+    "gulp": "3.9.1",
+    "gulp-autoprefixer": "3.1.1",
+    "gulp-babel": "6.1.2",
+    "gulp-browserify": "0.5.1",
+    "gulp-clean": "0.3.2",
+    "gulp-html-replace": "1.6.1",
+    "gulp-htmlmin": "3.0.0",
+    "gulp-if": "2.0.2",
+    "gulp-load-plugins": "1.4.0",
+    "gulp-pug": "3.1.0",
+    "gulp-rename": "1.2.2",
+    "gulp-sass": "2.3.2",
+    "gulp-sequence": "0.4.6",
+    "gulp-uglify": "2.0.0",
+    "lodash": "4.16.6",
+    "mongoose": "4.6.7",
+    "morgan": "1.7.0",
+    "pug": "2.0.0-beta6",
+    "query-string": "4.2.3",
+    "random-guid": "0.1.4",
+    "redux-watch": "1.1.1",
+    "tachyons": "4.5.5",
+    "webfontloader": "1.6.26"
+  },
+  "devDependencies": {
+    "gulp-shell": "0.5.2"
+  }
+}

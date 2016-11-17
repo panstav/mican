@@ -1,0 +1,39 @@
+[
+  {
+    "title": "פערים ומגזרים",
+    "namespace": "demographics",
+    "icon": "discrimination"
+  },{
+    "title": "תקשורת ומידע",
+    "namespace": "communication",
+    "icon": "newspaper"
+  },{
+    "title": "שקיפות ומנהל תקין",
+    "namespace": "transparency",
+    "icon": "sheriff-badge"
+  },{
+    "title": "צדק חברתי",
+    "namespace": "social-justice",
+    "icon": "camera"
+  },{
+    "title": "הגברת מודעות",
+    "namespace": "awareness",
+    "icon": "megaphone"
+  },{
+    "title": "סביבה וטבע",
+    "namespace": "environment",
+    "icon": "drop"
+  },{
+    "title": "צרכנות וקואופרטיבים",
+    "namespace": "cooperatives",
+    "icon": "gear"
+  },{
+    "title": "קהילות וערבות הדדית",
+    "namespace": "communal",
+    "icon": "house"
+  },{
+    "title": "מחקר, חשיבה והכשרה",
+    "namespace": "guidance",
+    "icon": "puzzle"
+  }
+]

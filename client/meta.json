@@ -1,0 +1,34 @@
+{
+
+  "title": "עמוד הבית | מכאן",
+  "namespace": "homepage",
+  "description": "אינדקס יוזמות חברתיות. הגיע הזמן להתארגן ברשת!",
+  "author": "Stav Geffen",
+  "locale": "he_IL",
+
+  "og": {
+    "siteName": "Mican",
+    "url": "https://www.mican.co.il/",
+    "title": "מכאן - יוזמות חברתיות",
+    "description": "אינדקס יוזמות חברתיות. הגיע הזמן להתארגן ברשת!",
+    "image": "https://s3.eu-central-1.amazonaws.com/mican/logo/logo-square.jpg",
+    "type": "website"
+  },
+
+  "facebook": {
+    "appId": "1011418022209063",
+    "admins": "744684059"
+  },
+
+  "twitter": {
+    "title": "מכאן - יוזמות חברתיות",
+    "description": "אינדקס יוזמות חברתיות. הגיע הזמן להתארגן ברשת!",
+    "image": "https://s3.eu-central-1.amazonaws.com/mican/logo/logo-square.jpg",
+    "creator": "@stavgeffen",
+    "card": "summary"
+  },
+
+  "bing": {
+    "verification": "66210C1BD52CB9DFEAF89E92C2D0C35C"
+  }
+}

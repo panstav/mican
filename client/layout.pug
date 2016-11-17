@@ -1,0 +1,18 @@
+doctype html
+html(lang=meta.locale)
+   head
+      include head/settings
+      include head/seo
+      include head/favicon
+      include head/resources
+
+   body
+
+      - var hasHeader = meta.namespace !== 'homepage';
+
+      main(id=meta.namespace class=hasHeader&&'pt5')
+
+         if hasHeader
+            include components/header
+
+         block content

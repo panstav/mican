@@ -1,0 +1,38 @@
+extends ../../layout
+
+block content
+
+    h1.mb0.tc.f-headline.tracked מכאן
+    p.tc.f3.tracked אתר היוזמות החברתיות
+
+    section.mt5.pa3.pa4-l.bg-yellow
+
+        form.cf.mw7.pa4.center.ba.b--black-10.br2-ns(
+        action='/search' method='get'
+        )
+
+            input#search-input.input-reset.fr.pa3.w-100.w-75-m.w-80-l.bg-washed-white.bn.br2-ns.br--right-ns.f5.f3-l.black-80(
+            type='text' name='q' value=''
+            )
+
+            input.button-reset.pointer.fr.pv3.w-100.w-25-m.w-20-l.bg-yellow.hover-bg-gold.bg-left.bg-animate.bn.br2-ns.br--left-ns.f5.f3-l(
+            type='submit' value='חפש'
+            )
+
+        #categories.cf.tc.mt4.w-80.mw7.center
+            each category in categories
+
+                a.dib.tc.pa3.hover-bg-washed-yellow.br-100.bg-animate(
+                href='./category/'+category.namespace title='הצג יוזמות בקטגוריה '+category.title
+                )
+
+                    - var url = 'svg/' + category.icon + '.svg';
+                    img.w-100.v-mid(
+                    src=url
+                    )
+
+    section.center.ph3.ph4-ns.mw7.mv5.f4.lh-copy
+        p
+            |מכאן נוסדה רעיונית איפשהו שם בתחילת 2013 כסוג של ניסוי כלים. אז עוד קראנו לזה 'דרכנו', והרבה מים עברו מתחת לגשר. כך או אחרת - היוזמה נמצאת בפיתוח תמידי.
+        p
+            |היינו רוצים לתת יד ליוזמות חברתיות הפועלות בדרכנו ומשקיעות אנרגיה כה רבה למה שמטיב עם כולנו. כמטרת על - לעת עתה- מכאן שואפת להיות במה מסודרת העונה על זוג צרכים בסיסיים - הנגשת מידע וגיוס משאבים ומתנדבים.

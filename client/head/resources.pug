@@ -1,0 +1,8 @@
+- var styles = (isProduction ? randomHash : 'styles') +'.css';
+- var scripts = (isProduction ? randomHash : 'scripts') +'.js';
+
+link(rel='stylesheet' href='tachyons.min.css')
+link(rel='stylesheet' href=styles)
+
+script(src='zepto.min.js')
+script(src=scripts)

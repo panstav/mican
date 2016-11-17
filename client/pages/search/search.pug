@@ -1,0 +1,33 @@
+extends ../../layout
+
+block content
+
+    section.pa3.center
+
+        h2= (search.results.length ? 'תוצאות חיפוש עבור ' : 'לא נמצאו תוצאות חיפוש עבור ') + search.terms
+
+        #search-results(class="tc")
+
+            each group in search.results
+
+                article(
+                class="dib v-top mw5 pa2 b--gray bw1 ma3 tr"
+                )
+
+                    a(
+                    class="dib link pointer"
+                    title=group.title
+                    href=group.url
+                    )
+
+                        if group.image
+                            img(
+                            class="o-90 ba b--light-gray pa2 border-box"
+                            src=group.image
+                            )
+
+                        div(
+                        class="ma2 br1 b--transparent"
+                        )
+                            span#title(class="db mv2 lh-copy")= group.title
+                            span#desc(class="db light-silver hover-gray f5 lh-title")= group.desc
