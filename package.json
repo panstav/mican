@@ -42,10 +42,10 @@
     "pug": "2.0.0-beta6",
     "query-string": "4.2.3",
     "random-guid": "0.1.4",
+    "redux": "3.6.0",
     "redux-watch": "1.1.1",
     "tachyons": "4.5.5",
-    "webfontloader": "1.6.26",
-    "redux": "latest"
+    "webfontloader": "1.6.26"
   },
   "devDependencies": {
     "gulp-shell": "0.5.2"

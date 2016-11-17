@@ -74,7 +74,7 @@ function pugRender(req, res, next){
 			_.merge(meta, { author: meta.author });
 		}
 
-		const pugOptions = _.merge({ production: isProduction, pretty: !isProduction }, config, { meta }, view);
+		const pugOptions = _.merge({ pretty: !isProduction }, config, { meta }, view);
 		res.send(pug.renderFile(`client/pages/${path}/${path}.pug`, pugOptions));
 		return Promise.resolve();
 	};

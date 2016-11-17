@@ -1,8 +1,12 @@
-const guid = require('random-guid');
+const version = require('./package.json').version;
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 const config = {
-	randomHash: guid.randomString().substr(0, 10),
-	domain: process.env.NODE_ENV === 'production'
+	isProduction,
+	version,
+
+	domain: isProduction
 		? 'https://www.mican.co.il/'
 		: `localhost:${process.env.PORT}/`,
 
