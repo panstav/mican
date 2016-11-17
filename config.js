@@ -1,6 +1,7 @@
-const fs = require('fs');
+const guid = require('random-guid');
 
 const config = {
+	randomHash: guid.randomString().substr(0, 10),
 	domain: process.env.NODE_ENV === 'production'
 		? 'https://www.mican.co.il/'
 		: `localhost:${process.env.PORT}/`,
@@ -8,9 +9,5 @@ const config = {
 	meta: require('./client/meta'),
 	categories: require('./client/categories')
 };
-
-fs.readdir('./public', (err, files) => {
-	config.randomHash = files.find(filename => filename.includes('.js')).split('.')[0];
-});
 
 module.exports = config;

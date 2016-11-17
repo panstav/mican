@@ -1,13 +1,10 @@
 const gulp = require('gulp');
 const plugins = require('gulp-load-plugins')();
-
 const _ = require('lodash');
-const guid = require('random-guid');
 
 const config = require('./config');
 
 const isProduction = process.env.NODE_ENV === 'production';
-const randomHash = guid.randomString().substr(0, 10);
 
 gulp.task('clean', () => {
 
@@ -50,7 +47,7 @@ gulp.task('css', () => {
 	return gulp.src('client/index.sass')
 		.pipe(plugins.sass(sassOptions))
 		.pipe(plugins.autoprefixer({ browsers: ['> 1%', 'ie > 8'] }))
-		.pipe(plugins.rename({ basename: isProduction ? `${randomHash}.min` : 'styles' }))
+		.pipe(plugins.rename({ basename: isProduction ? `${config.randomHash}.min` : 'styles' }))
 		.pipe(gulp.dest('public'));
 
 });
@@ -61,7 +58,7 @@ gulp.task('javascript', () => {
 		.pipe(plugins.browserify())
 		.pipe(plugins.babel({ presets: ['es2015'] }))
 		.pipe(plugins.if(isProduction, plugins.uglify()))
-		.pipe(plugins.rename({ basename: isProduction ? `${randomHash}.min` : 'scripts' }))
+		.pipe(plugins.rename({ basename: isProduction ? `${config.randomHash}.min` : 'scripts' }))
 		.pipe(gulp.dest('public'));
 
 });
@@ -69,7 +66,7 @@ gulp.task('javascript', () => {
 gulp.task('html', () => {
 
 	return gulp.src('client/pages/homepage/homepage.pug')
-		.pipe(plugins.pug({ locals: _.extend({randomHash, production:isProduction}, config), pretty: !isProduction }))
+		.pipe(plugins.pug({ locals: _.extend({production:isProduction}, config), pretty: !isProduction }))
 		.pipe(plugins.rename({ dirname: 'pages' }))
 		.pipe(plugins.if(isProduction, plugins.htmlmin({ collapseWhitespace: true })))
 		.pipe(gulp.dest('public'));
