@@ -20,14 +20,14 @@ block content
                     href=group.url
                     )
 
-                        if group.image
+                        if group.hero
                             img(
                             class="o-90 ba b--light-gray pa2 border-box"
-                            src=group.image
+                            src=group.hero
                             )
 
                         div(
                         class="ma2 br1 b--transparent"
                         )
                             span#title(class="db mv2 lh-copy")= group.title
-                            span#desc(class="db light-silver hover-gray f5 lh-title")= group.desc
+                            span#desc(class="db light-silver hover-gray f5 lh-title")= group.description

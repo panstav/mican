@@ -1,10 +1,13 @@
 const _ = require('lodash');
 
 const mongoose = require('mongoose');
+const timestamps = require('mongoose-timestamp');
 mongoose.Promise = global.Promise;
 
 // models
-const groupModel = mongoose.model('group', mongoose.Schema(require('./models/group')));
+const groupSchema = mongoose.Schema(require('./models/group'));
+groupSchema.plugin(timestamps);
+const groupModel = mongoose.model('group', groupSchema);
 
 module.exports = {
 
@@ -23,12 +26,11 @@ module.exports = {
 };
 
 function getGroupsOverview(){
-	return mongoose.model('group').find({}, 'displayName desc profile').lean().exec()
-		.then(groups => groups.map(group => ({
-			title: group.displayName,
-			desc: group.desc,
-			image: _.get(group, 'profile.hero.url')
-		})));
+	return mongoose.model('group').find({}, 'title description hero').lean().exec()
+		.then(groups => groups.map(group => {
+			group.hero = group.hero && `https://res.cloudinary.com/huxztvldj/image/upload/c_limit,w_1200/${group.hero}`;
+			return group;
+		}));
 }
 
 function getGroupsByCategory(category){
@@ -45,7 +47,7 @@ function init(){
 			resolve(mongoose.connection);
 		});
 
-		mongoose.connect(process.env.MONGO_URI);
+		mongoose.connect(process.env.MONGODB_URI);
 	});
 
 	return p.catch(err => {

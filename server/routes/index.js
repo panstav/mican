@@ -33,8 +33,8 @@ function search(req, res){
 			.filter(group => group.score !== 0)
 			.map(trimDesc)
 			.sortBy('score')
-			.sortBy(group => !group.image)
-			.map(group =>{
+			.sortBy(group => !group.hero)
+			.map(group => {
 				delete group.score;
 				return group;
 			})
@@ -44,7 +44,7 @@ function search(req, res){
 
 			group.score = fuzzy.match(terms, group.title).score;
 
-			group.desc.forEach(para =>{
+			group.description.forEach(para => {
 				const paraScore = fuzzy.match(terms, para).score;
 				if (paraScore > 0.3) group.score += paraScore;
 			});
@@ -53,7 +53,7 @@ function search(req, res){
 		}
 
 		function trimDesc(group){
-			group.desc = group.desc[0];
+			group.description = group.description[0];
 			return group;
 		}
 
@@ -64,7 +64,7 @@ function search(req, res){
 		const meta = {
 			namespace: 'search',
 			title: `תוצאות חיפוש עבור ${terms} | מכאן`,
-			description: _.get(results, '[0].desc[0]') || 'לא נמצאו יוזמות למילות חיפוש אלו',
+			description: _.get(results, '[0].description[0]') || 'לא נמצאו יוזמות למילות חיפוש אלו',
 			url: `search?q=${terms.replace(' ', '+')}`
 		};
 
