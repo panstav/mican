@@ -1,6 +1,6 @@
 {
   "name": "Mican",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Israeli Social Initiatives Index",
   "main": "index.js",
   "engines": {
