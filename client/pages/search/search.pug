@@ -2,16 +2,16 @@ extends ../../layout
 
 block content
 
-    section.pa3.center
+    section
 
-        h2= (search.results.length ? 'תוצאות חיפוש עבור ' : 'לא נמצאו תוצאות חיפוש עבור ') + search.terms
+        h1(class="f3 pr4")= (search.results.length ? search.results.length + ' תוצאות חיפוש עבור: "' : 'לא נמצאו תוצאות חיפוש עבור: "') + search.terms + '"'
 
-        #search-results(class="tc")
+        #search-results
 
             each group in search.results
 
                 article(
-                class="dib v-top mw5 pa2 b--gray bw1 ma3 tr"
+                class="dib v-top ma3 mb4 mb3-l bw1 b--gray pa2 tr"
                 )
 
                     a(
@@ -29,5 +29,5 @@ block content
                         div(
                         class="ma2 br1 b--transparent"
                         )
-                            span#title(class="db mv2 lh-copy")= group.title
-                            span#desc(class="db light-silver hover-gray f5 lh-title")= group.description
+                            span#title(class="db mv2 gray f4 lh-copy")= group.title
+                            span#desc(class="db light-silver f5 lh-title")= group.description

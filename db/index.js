@@ -26,9 +26,10 @@ module.exports = {
 };
 
 function getGroupsOverview(){
-	return mongoose.model('group').find({}, 'title description hero').lean().exec()
+	return mongoose.model('group').find({}, 'title description hero links').lean().exec()
 		.then(groups => groups.map(group => {
 			group.hero = group.hero && `https://res.cloudinary.com/huxztvldj/image/upload/c_limit,w_1200/${group.hero}`;
+			group.url = group.links.home || group.links.facebook || group.links.twitter || group.links.google;
 			return group;
 		}));
 }
