@@ -8,6 +8,8 @@ module.exports = router => {
 
 	router.get('/search', search);
 
+	router.get('/group/:groupId', group);
+
 };
 
 function search(req, res){
@@ -80,6 +82,53 @@ function search(req, res){
 		};
 
 		return res.pugRender('search', meta, { search: { terms, results } });
+	}
+
+}
+
+function group(req, res){
+
+	const groupIdentifier = req.params.groupId;
+	if (!groupIdentifier) return res.redirect(302, '/search');
+
+	Promise.resolve()
+		.then(getGroupByIdentifer)
+		.then(transform)
+		.then(sendResults)
+		.catch(err => {
+			console.error(err);
+			console.error(err.stack);
+		});
+
+	function getGroupByIdentifer(){
+
+		const query = db.validId(groupIdentifier)
+			? { _id: groupIdentifier }
+			: { namespace: groupIdentifier };
+
+		return db.models.groups.findOne(query).lean().exec();
+
+	}
+
+	function transform(group){
+		group.hero = `https://res.cloudinary.com/huxztvldj/image/upload/c_limit,w_1200/${group.hero}`;
+		return group;
+	}
+
+	function sendResults(group){
+
+		// go back to home page if group is still pending
+		if (group.pending) return res.redirect(302, '/');
+
+		const meta = {
+			namespace: 'group',
+			title: `${group.title} | מכאן`,
+			description: _.get(group, 'description[0]') || '',
+			url: `group/${group.namespace || group.id}`
+		};
+
+		return res.pugRender('group', meta, { group });
+
 	}
 
 }

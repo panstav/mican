@@ -14,6 +14,8 @@ module.exports = {
 	init,
 	close,
 
+	validId,
+
 	models: {
 		groups: groupModel
 	},
@@ -50,4 +52,19 @@ function init(){
 
 function close(){
 	return new Promise(resolve => mongoose.connection.close(resolve));
+}
+
+function validId(id){
+
+	// generate new random id if none given
+	if (id === undefined) return mongoose.Types.ObjectId().toString();
+
+	// otherwise validate given id
+	if (!id) return false;
+
+	const stringID = typeof(id) === 'string' ? id : id.toString();
+
+	return mongoose.Types.ObjectId.isValid(stringID)
+		&& /^[0-9a-fA-F]{24}$/.test(stringID);
+
 }
