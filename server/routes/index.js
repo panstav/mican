@@ -18,13 +18,25 @@ function search(req, res){
 	// redirect back to homepage upon empty terms
 	if (!terms || !_.trim(terms)) return res.redirect(302, '/');
 
-	return db.queries.getGroupsOverview()
+	return getGroups()
+		.then(groups => groups.map(transform))
 		.then(groups => searchAlgo(groups))
 		.then(sendResults)
 		.catch(err =>{
 			console.error(err);
 			console.error(err.stack);
 		});
+
+
+	function getGroups(){
+		return db.models.groups.find({}, 'title description hero links').lean().exec();
+	}
+
+	function transform(group){
+		group.hero = group.hero && `https://res.cloudinary.com/huxztvldj/image/upload/c_fill,w_480,h_360/${group.hero}`;
+		group.url = group.links.home || group.links.facebook || group.links.twitter || group.links.google;
+		return group;
+	}
 
 	function searchAlgo(groups){
 
