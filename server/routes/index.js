@@ -124,7 +124,8 @@ function group(req, res){
 
 		group.links = Object.keys(group.links)
 			.map(keyToLinkObject)
-			.filter(item => !!item);
+			.filter(link => !!link)
+			.sort((a,b) => a.platform === 'homepage' ? 1 : -1);
 
 		return group;
 
