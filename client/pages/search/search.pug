@@ -2,32 +2,30 @@ extends ../../layout
 
 block content
 
-    section(class="pt6 pt5-ns pt6-l")
+    h1(class="f3 pr4 pt3")= (search.results.length ? search.results.length + ' תוצאות חיפוש עבור: "' : 'לא נמצאו תוצאות חיפוש עבור: "') + search.terms + '"'
 
-        h1(class="f3 pr4")= (search.results.length ? search.results.length + ' תוצאות חיפוש עבור: "' : 'לא נמצאו תוצאות חיפוש עבור: "') + search.terms + '"'
+    #search-results
 
-        #search-results
+        each group in search.results
 
-            each group in search.results
+            article(
+            class="dib v-top ma3 mb4 mb3-l ba bw1 b--black-05 br1 pa2 tr"
+            )
 
-                article(
-                class="dib v-top ma3 mb4 mb3-l ba bw1 b--black-05 br1 pa2 tr"
+                a(
+                class="dib link pointer"
+                title=group.title
+                href='/group/' + (group.namespace || group._id)
                 )
 
-                    a(
-                    class="dib link pointer"
-                    title=group.title
-                    href=group.url
-                    )
-
-                        if group.hero
-                            img(
-                            class="o-90 ba b--light-gray pa2 border-box"
-                            src=group.hero
-                            )
-
-                        div(
-                        class="ma2 br1 b--transparent"
+                    if group.hero
+                        img(
+                        class="o-90 ba b--light-gray pa2 border-box"
+                        src=group.hero
                         )
-                            span#title(class="db h3 mv2 gray f4 lh-copy")= group.title
-                            span#desc(class="db light-silver f5 lh-title")= group.description
+
+                    div(
+                    class="ma2 br1 b--transparent"
+                    )
+                        span#title(class="db h3 mv2 gray f4 lh-copy")= group.title
+                        span#desc(class="db light-silver f5 lh-title")= group.description

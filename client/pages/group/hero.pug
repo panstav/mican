@@ -1,0 +1,44 @@
+section#group-card(
+class="relative " + (group.hero ? 'h-auto mb4' : 'h6')
+)
+
+	div(data-role="hero-holder")
+		if group.hero
+			img(
+			src=group.hero
+			class="db w-100 overflow-hidden"
+			)
+
+	div(
+	data-role="group-id"
+	class="cf bg-gold b--black-20 bt bb bw1 pv2"
+	)
+
+		div(
+		data-role="group-logo"
+		class="absolute b--black-10 ba bottom-1 right-1 br2 bw2 overflow-hidden w4 w5-l"
+		)
+			if group.hero
+				img(
+				src=group.logo
+				class="db w-100 h-auto"
+				)
+
+		h1(
+		class="dib mb0 mr6 mr7-l mt1 pl3 pr4 theme-headline v-top"
+		)= group.title
+
+		div(
+		data-role="links-container"
+		class="fl mt1"
+		)
+
+			each link in group.links
+
+				a(
+				href=link.value
+				title=link.title
+				class="dib w2 h2 ml3 pa1 br-100 bg-center hover-bg-white"
+				style="background-image: url(/svg/" + link.platform + ".svg);"
+				target="_blank" rel="noopener"
+				)

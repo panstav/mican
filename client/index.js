@@ -7,7 +7,7 @@ const controllers = require('./controllers');
 // const reductions = require('./reductions');
 // const subscriptions = require('./subscriptions');
 
-const store = createStore(()=>{}/*reductions*/);
+const store = createStore(state=>state);
 const dispatch = store.dispatch;
 const subscribe = store.subscribe;
 const getState = store.getState;
@@ -29,6 +29,6 @@ function loadFonts(){
 }
 
 function fireController(){
-	const controller = controllers[window.location.pathname];
-	controller(dispatch, subscribe, getState);
+	const ctrl = controllers.getCtrlByPath();
+	if (ctrl) ctrl(dispatch, subscribe, getState);
 }

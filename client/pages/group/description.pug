@@ -1,0 +1,10 @@
+.paper.limituer.description
+
+	h2.title מי אנחנו
+
+	p(ng-repeat="paragraph in sGroup.group.desc track by $index") {{ paragraph }}
+
+	button.small.develop.editDescription(
+	ng-show="sGroup.dev()"
+	ng-click="main.modal.open('edit-group-desc', { groupID: sGroup.group._id, editingDesc: sGroup.group.desc })"
+	) עריכת תיאור היוזמה

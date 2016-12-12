@@ -7,7 +7,7 @@ module.exports = {
 	hero: String,
 	category: String,
 	links: {
-		home: String,
+		homepage: String,
 		twitter: String,
 		facebook: String,
 		google: String

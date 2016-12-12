@@ -111,8 +111,29 @@ function group(req, res){
 	}
 
 	function transform(group){
-		group.hero = `https://res.cloudinary.com/huxztvldj/image/upload/c_limit,w_1200/${group.hero}`;
+
+		group.hero = `https://res.cloudinary.com/huxztvldj/image/upload/c_limit,w_1200,h_768/${group.hero}`;
+		group.logo = `https://res.cloudinary.com/huxztvldj/image/upload/c_limit,w_300/${group.logo}`;
+
+		const hebrewPlatformNames = {
+			homepage: 'בית',
+			twitter: 'טוויטר',
+			facebook: 'פייסבוק',
+			google: 'גוגל+'
+		};
+
+		group.links = Object.keys(group.links)
+			.map(keyToLinkObject)
+			.filter(item => !!item);
+
 		return group;
+
+		function keyToLinkObject(key){
+			const value = group.links[key];
+			if (value) return { platform: key === 'google' ? 'google-plus' : key, value, title: `עמוד ה${ hebrewPlatformNames[key] } של ${group.title}` };
+			return false;
+		}
+
 	}
 
 	function sendResults(group){

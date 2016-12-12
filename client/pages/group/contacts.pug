@@ -1,0 +1,36 @@
+.paper.step.limituer.contacts.dontbreak(
+ng-show="sGroup.group.profile.contacts.length"
+)
+
+	h2.title יצירת קשר
+
+	.singleContact(ng-repeat="contact in sGroup.group.profile.contacts")
+
+		button.develop.editContact.fa.fa-edit(
+		ng-show="sGroup.dev()"
+		ng-click="sGroup.editContact(contact)"
+		)
+
+		.channel.fa(
+		ng-class="'fa-' + sGroup.contactChannelFaClass[contact.channel]"
+		title="{{ sGroup.contactChannelTitle[contact.channel] }}"
+		)
+
+		.details
+
+			a.value(
+			ng-href="{{ sGroup.formatLinkProtocol(contact.channel, contact.value) }}"
+			target="_blank" rel="noopener"
+			) {{ contact.channel === 'link' ? sGroup.prettifyUrl(contact.value) : contact.value }}
+
+			.nameOfContact
+				label איש הקשר:
+				| {{ contact.nameOfContact }}
+
+	.center(
+	ng-show="sGroup.dev() && sGroup.group.profile.contacts.length"
+	)
+
+		button.small.develop(
+		ng-click="sGroup.addContact()"
+		) הוספת פרטי התקשרות נוספים

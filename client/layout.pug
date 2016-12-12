@@ -9,10 +9,8 @@ html(lang=meta.locale)
    body
 
       - var hasHeader = meta.namespace !== 'homepage';
+      if hasHeader
+         include components/header
 
       main(id=meta.namespace)
-
-         if hasHeader
-            include components/header
-
          block content
