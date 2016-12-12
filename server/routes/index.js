@@ -106,7 +106,7 @@ function group(req, res){
 			? { _id: groupIdentifier }
 			: { namespace: groupIdentifier };
 
-		return db.models.groups.findOne(query).lean().exec();
+		return db.models.groups.findOne(query, 'title namespace hero logo links description createdAt contacts').lean().exec();
 
 	}
 
@@ -114,6 +114,9 @@ function group(req, res){
 
 		group.hero = `https://res.cloudinary.com/huxztvldj/image/upload/c_limit,w_1200,h_768/${group.hero}`;
 		group.logo = `https://res.cloudinary.com/huxztvldj/image/upload/c_limit,w_300/${group.logo}`;
+
+		group.summary = group.description[0];
+		group.description = group.description.slice(1);
 
 		const hebrewPlatformNames = {
 			homepage: 'בית',
