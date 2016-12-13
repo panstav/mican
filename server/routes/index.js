@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const fuzzy = require('fuzzyjs');
+const humanizeUrl = require('humanize-url');
 
 const config = require('../../config');
 const db = require('../../db');
@@ -106,7 +107,7 @@ function group(req, res){
 			? { _id: groupIdentifier }
 			: { namespace: groupIdentifier };
 
-		return db.models.groups.findOne(query, 'title namespace hero logo links description createdAt contacts').lean().exec();
+		return db.models.groups.findOne(query, 'title namespace hero logo links description contacts').lean().exec();
 
 	}
 
@@ -129,6 +130,19 @@ function group(req, res){
 			.map(keyToLinkObject)
 			.filter(link => !!link)
 			.sort((a,b) => a.platform === 'homepage' ? 1 : -1);
+
+		const hebrewContactChannelNames = {
+			email: 'כתובת מייל',
+			tel: 'מספר טלפון',
+			link: 'לינק',
+			google: 'גוגל+'
+		};
+
+		group.contacts = group.contacts.map(contact => {
+			contact.hebChannel = hebrewContactChannelNames[contact.channel];
+			if (contact.channel === 'link') contact.humanValue = humanizeUrl(contact.value);
+			return contact;
+		});
 
 		return group;
 

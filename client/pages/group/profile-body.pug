@@ -1,5 +1,5 @@
 section#group-profile(
-class="pv4 ph3 ph4-l mw8 mr7-l"
+class="mv4 ph3 ph4-l mw8 mr7-l"
 )
 
 	h2 מי אנחנו
@@ -21,3 +21,19 @@ class="pv4 ph3 ph4-l mw8 mr7-l"
 	)
 		each para in group.description
 			p=para
+
+	div(
+	data-role="group-contacts"
+	class="mt4"
+	)
+		each contact in group.contacts
+			span(class="db mt2 b")=contact.hebChannel + ' - ' + contact.name
+
+			if contact.channel === 'email'
+				a(href="mailto:"+contact.value class="db")=contact.value
+			else if contact.channel === 'tel'
+				a(href="tel:"+contact.value class="db")=contact.value
+			else if contact.channel === 'link'
+				a(href=contact.value class="db")=contact.humanValue
+			else
+				span(class="db")=contact.value
