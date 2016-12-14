@@ -8,8 +8,11 @@ module.exports = { getCtrlByPath };
 
 function getCtrlByPath(){
 
-	return Object.keys(controllers)
-		.filter(ctrl => window.location.pathname.indexOf(ctrl) === 0)
-		.reduce((prevMatch, key) => prevMatch.length < key.length ? controllers[key] : prevMatch);
+	const currentUrl = window.location.pathname;
 
+	const matchControllerKey = Object.keys(controllers)
+		.filter(path => currentUrl.indexOf(path) === 0)
+		.reduce((matchPath, path) => matchPath.length < path.length ? path : matchPath, '');
+
+	return controllers[matchControllerKey];
 }
