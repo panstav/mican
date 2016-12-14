@@ -36,7 +36,7 @@ function search(req, res){
 	}
 
 	function transform(group){
-		group.hero = group.hero && `https://res.cloudinary.com/huxztvldj/image/upload/c_fill,w_480,h_360/${group.hero}`;
+		group.hero = group.hero && `https://res.cloudinary.com/huxztvldj/image/upload/c_fill,w_230,h_180/${group.hero}`;
 		group.url = group.links.home || group.links.facebook || group.links.twitter || group.links.google;
 		return group;
 	}
