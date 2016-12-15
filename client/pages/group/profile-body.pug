@@ -4,23 +4,8 @@ class="mv4 ph3 ph4-l mw8 mr7-l"
 
 	h2 מי אנחנו
 
-	div(
-	data-role="group-summary"
-	)
-		p(class="dib ml2")=group.summary
-
-		a(
-		data-action="read-more"
-		href="#group-profile"
-		class="dib"
-		) קרא\י עוד
-
-	div(
-	data-role="group-description"
-	class="dn"
-	)
-		each para in group.description
-			p=para
+	each para in group.description
+		p=para
 
 	div(
 	data-role="group-contacts"
