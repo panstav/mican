@@ -113,9 +113,6 @@ function group(req, res){
 
 	function transform(group){
 
-		group.hero = `https://res.cloudinary.com/huxztvldj/image/upload/c_limit,w_1200,h_768/${group.hero}`;
-		group.logo = `https://res.cloudinary.com/huxztvldj/image/upload/c_limit,w_300/${group.logo}`;
-
 		const hebrewPlatformNames = {
 			homepage: 'בית',
 			twitter: 'טוויטר',
