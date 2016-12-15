@@ -15,11 +15,12 @@ main#search
 		&:hover
 			background-color: rgba(0, 0, 0, .03)
 
-		// content beside images shrinks to the left
-		img + [data-role="group-content-container"]
-			width: calc(100% - 8.5rem)
-			@media (min-width: 60rem)
-				width: calc(100% - 17rem)
+		@media (min-width: 30rem)
+			// content beside images shrinks to the left
+			img + [data-role="group-content-container"]
+				width: calc(100% - 8.5rem)
+				@media (min-width: 60rem)
+					width: calc(100% - 17rem)
 
 		a:hover, a:focus
 			img
