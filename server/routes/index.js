@@ -45,7 +45,7 @@ function search(req, res){
 
 		return _(groups)
 			.map(appendScore)
-			.filter(group => group.score !== 0)
+			.filter(group => group.score > 0.5)
 			.map(trimDesc)
 			.orderBy('score', 'desc')
 			.sortBy(group => !group.hero)
