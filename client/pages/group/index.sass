@@ -2,12 +2,20 @@ main#group
 
 	[data-role="hero-holder"]
 		max-height: 80vh
-		min-height: 15rem
 		overflow: hidden
 
 	[data-role="group-logo"]
+		top: -4.5rem
+		@media (min-width: 60rem)
+			top: -12.6rem
 		background-color: #C4C4C4
 		margin-right: -3px
+
+		// create extra space when a logo is present
+		&:not(group.hero)+[data-role="group-id-bar"]
+			margin-top: 8rem
+			@media (min-width: 60rem)
+				margin-top: 16rem
 
 	[data-role="group-description"] p:first-of-type
 		margin-top: 0
