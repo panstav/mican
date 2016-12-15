@@ -9,9 +9,11 @@ class="relative " + (group.hero ? 'h-auto mb4' : 'h6')
 			class="db w-100 overflow-hidden"
 			)
 
+	-var idBorders = ' ' + (group.hero ? 'bt bb' : 'bb');
+
 	div(
 	data-role="group-id"
-	class="cf bg-gold b--black-20 bt bb bw1 pv2"
+	class="cf bg-gold b--black-20 bw1 pv2" + idBorders
 	)
 
 		if group.logo
