@@ -2,30 +2,38 @@ extends ../../layout
 
 block content
 
-    h1(class="f3 pr4 pt3")= (search.results.length ? search.results.length + ' תוצאות חיפוש עבור: "' : 'לא נמצאו תוצאות חיפוש עבור: "') + search.terms + '"'
+    h1(class="f3 pr4 mv4")= (search.results.length ? search.results.length + ' תוצאות חיפוש עבור: "' : 'לא נמצאו תוצאות חיפוש עבור: "') + search.terms + '"'
 
     #search-results
 
         each group in search.results
 
             article(
-            class="dib v-top ma3 mb4 mb3-l ba bw1 b--black-05 br1 pa2 tr"
+            class="b--black-05 ba br1 bw1 ma3 pa2 v-top"
             )
 
                 a(
-                class="dib link pointer"
+                class="cf db"
                 title=group.title
                 href='/group/' + (group.namespace || group._id)
                 )
 
                     if group.hero
                         img(
-                        class="o-90 ba b--light-gray pa2 border-box"
+                        class="fr w4 w5-l ml2 o-90 ba b--light-gray pa2 border-box"
                         src=group.hero
                         )
 
                     div(
-                    class="ma2 br1 b--transparent"
+                    data-role="group-content-container"
+                    class="fl br1 b--transparent"
                     )
-                        span#title(class="db h3 mv2 gray f4 lh-copy")= group.title
-                        span#desc(class="db light-silver f5 lh-title")= group.description
+                        span(
+                        data-role="group-title"
+                        class="db mv2 gray f4 f3-l lh-title"
+                        )= group.title
+
+                        span(
+                        data-role="group-description-summary"
+                        class="db f5 f4-l lh-copy light-silver pl2"
+                        )= group.description
