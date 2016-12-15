@@ -45,14 +45,14 @@ function search(req, res){
 
 		return _(groups)
 			.map(appendScore)
-			.filter(group => group.score > 0.5)
+			.filter(group => group.score > 0.3)
 			.map(trimDesc)
 			.orderBy('score', 'desc')
-			.sortBy(group => !group.hero)
 			.map(group => {
 				delete group.score;
 				return group;
 			})
+			.sortBy(group => !group.hero)
 			.value();
 
 		function appendScore(group){
