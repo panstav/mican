@@ -4,19 +4,20 @@ main#search
 		background-image: url(svg/search.svg)
 		background-position: center center
 
-	#search-results
+	article
+		background-color: rgba(0, 0, 0, .01)
+		text-align: justify
+		max-width: 50rem
+		@media (min-width: 60rem)
+			max-width: 65rem
+		@media (min-width: 75rem)
+			margin-right: 2rem
+		&:hover
+			background-color: rgba(0, 0, 0, .03)
 
-		article
-			background-color: rgba(0, 0, 0, .01)
-			text-align: justify
-			max-width: 50rem
-			@media (min-width: 60rem)
-				max-width: 65rem
-			&:hover
-				background-color: rgba(0, 0, 0, .03)
-
-		[data-role="group-content-container"]
-			width: calc(100% - 9rem)
+		// content beside images shrinks to the left
+		img + [data-role="group-content-container"]
+			width: calc(100% - 8.5rem)
 			@media (min-width: 60rem)
 				width: calc(100% - 17rem)
 

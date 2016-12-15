@@ -13,7 +13,7 @@ block content
             )
 
                 a(
-                class="cf db"
+                class="cf db no-underline"
                 title=group.title
                 href='/group/' + (group.namespace || group._id)
                 )
@@ -26,7 +26,7 @@ block content
 
                     div(
                     data-role="group-content-container"
-                    class="fl br1 b--transparent"
+                    class="fr ph2"
                     )
                         span(
                         data-role="group-title"
@@ -35,5 +35,5 @@ block content
 
                         span(
                         data-role="group-description-summary"
-                        class="db f5 f4-l lh-copy light-silver pl2"
+                        class="db f5 f4-l lh-copy light-silver"
                         )= group.description
